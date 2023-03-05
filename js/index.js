@@ -3,5 +3,8 @@ Vue.createApp({
         return {
 
         }
+    },
+    methods: {
+        
     }
 }).mount("#app")
