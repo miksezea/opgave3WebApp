@@ -10,37 +10,39 @@
 </head>
 
 <body>
-    <h1>String manipulation</h1>
-    <div id="app">
+    <div class="container" id="app">
+        <h1>String manipulations</h1>
         <form @submit.prevent="submitWord">
             <input id="word" type="text" v-model="inputWord" placeholder="Word" required>
-            <button type="submit">Show it</button>
+            <button type="submit">Show</button>
         </form>
         <hr>
-        <h2>Ordered list:</h2>
-        <ol v-for="word in words" :key="word.original">
-            <li>{{ word.lowercase }}</li>
+        <ul v-for="word in words" :key="word.original">
+            <li>{{ word.original }}</li>
             <li>{{ word.uppercase }}</li>
-        </ol>
-        <h2>Table:</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Original Word</th>
-                    <th>Lowercase</th>
-                    <th>Uppercase</th>
-                    <th>Capitalized</th>
-                    <th>End-capitalized</th>
-                    <th>Reversed</th>
-                </tr>
-            </thead>
+            <li>{{ word.lowercase }}</li>
+            <li>{{ word.capitalized }}</li>
+            <li>{{ word.endCapitalized }}</li>
+            <li>{{ word.reversed }}</li>
+        </ul>
+        <table class="table table-striped" v-for="word in words" :key="word.original">
             <tbody>
-                <tr v-for="word in words" :key="word.original">
+                <tr>
                     <td>{{ word.original }}</td>
-                    <td>{{ word.lowercase }}</td>
+                </tr>
+                <tr>
                     <td>{{ word.uppercase }}</td>
+                </tr>
+                <tr>
+                    <td>{{ word.lowercase }}</td>
+                </tr>
+                <tr>
                     <td>{{ word.capitalized }}</td>
+                </tr>
+                <tr>
                     <td>{{ word.endCapitalized }}</td>
+                </tr>
+                <tr>
                     <td>{{ word.reversed }}</td>
                 </tr>
             </tbody>
