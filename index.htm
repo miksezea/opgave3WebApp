@@ -4,22 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/vue@next"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Opgave 3</title>
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
 
 <body>
     <h1>String manipulation</h1>
     <div id="app">
-        <form v-on:submit.prevent="submitWord">
-            <input id="word" type="text" v-model.lazy="inputWord" placeholder="Word" required>
+        <form @submit.prevent="submitWord">
+            <input id="word" type="text" v-model="inputWord" placeholder="Word" required>
             <button type="submit">Show it</button>
         </form>
         <hr>
         <h2>Ordered list:</h2>
-        <ol>
-            <li></li>
+        <ol v-for="word in words" :key="word.original">
+            <li>{{ word.lowercase }}</li>
+            <li>{{ word.uppercase }}</li>
         </ol>
         <h2>Table:</h2>
         <table>
@@ -34,13 +35,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr v-for="word in words" :key="word.original">
+                    <td>{{ word.original }}</td>
+                    <td>{{ word.lowercase }}</td>
+                    <td>{{ word.uppercase }}</td>
+                    <td>{{ word.capitalized }}</td>
+                    <td>{{ word.endCapitalized }}</td>
+                    <td>{{ word.reversed }}</td>
                 </tr>
             </tbody>
         </table>
